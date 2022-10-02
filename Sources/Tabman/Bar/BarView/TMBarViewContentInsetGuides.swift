@@ -53,22 +53,14 @@ internal final class TMBarViewContentInsetGuides: TMBarLayoutInsetGuides {
         barView.addLayoutGuide(content)
         barView.addLayoutGuide(trailingInset)
         
-        if #available(iOS 11, *) {
-            leadingInset.leadingAnchor.constraint(equalTo: barView.safeAreaLeadingAnchor).isActive = true
-        } else {
-            leadingInset.leadingAnchor.constraint(equalTo: barView.leadingAnchor).isActive = true
-        }
+        leadingInset.leadingAnchor.constraint(equalTo: barView.safeAreaLeadingAnchor).isActive = true
         leadingInset.topAnchor.constraint(equalTo: barView.topAnchor).isActive = true
         
         content.leadingAnchor.constraint(equalTo: leadingInset.trailingAnchor).isActive = true
         content.topAnchor.constraint(equalTo: barView.topAnchor).isActive = true
         content.trailingAnchor.constraint(equalTo: trailingInset.leadingAnchor).isActive = true
         
-        if #available(iOS 11, *) {
-            trailingInset.trailingAnchor.constraint(equalTo: barView.safeAreaTrailingAnchor).isActive = true
-        } else {
-            trailingInset.trailingAnchor.constraint(equalTo: barView.trailingAnchor).isActive = true
-        }
+        trailingInset.trailingAnchor.constraint(equalTo: barView.safeAreaTrailingAnchor).isActive = true
         trailingInset.topAnchor.constraint(equalTo: barView.topAnchor).isActive = true
         
         self.leadingWidth = leadingInset.widthAnchor.constraint(equalToConstant: insets.left)

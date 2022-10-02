@@ -53,17 +53,7 @@ extension TabmanViewController {
         // MARK: Utility
         
         public static func makeSafeAreaInsets(for viewController: UIViewController) -> UIEdgeInsets {
-            if #available(iOS 11, *) {
-                return viewController.view.safeAreaInsets
-            } else {
-                let topLayoutGuideLength = viewController.topLayoutGuide.length
-                let bottomLayoutGuideLength = viewController.bottomLayoutGuide.length
-                
-                return UIEdgeInsets(top: topLayoutGuideLength,
-                                    left: 0.0,
-                                    bottom: bottomLayoutGuideLength,
-                                    right: 0.0)
-            }
+            return viewController.view.safeAreaInsets
         }
     }
 }

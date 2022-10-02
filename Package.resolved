@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Pageboy",
+        "repositoryURL": "https://github.com/BlueVirusX/Pageboy",
+        "state": {
+          "branch": null,
+          "revision": "85cde6fda94c4ed801b5542347a1c2bc02eeca8b",
+          "version": "3.8.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

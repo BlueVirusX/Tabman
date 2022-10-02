@@ -179,9 +179,7 @@ open class TMBarView<Layout: TMBarLayout, Button: TMBarButton, Indicator: TMBarI
         buttons.interactionHandler = self
         scrollHandler.delegate = self
         scrollView.gestureDelegate = self
-        if #available(iOS 10.0, *) {
-            accessibilityTraits = [.tabBar]
-        }
+        accessibilityTraits = [.tabBar]
         layout(in: self)
         
         NotificationCenter.default.addObserver(self,
@@ -255,17 +253,10 @@ open class TMBarView<Layout: TMBarLayout, Button: TMBarButton, Indicator: TMBarI
         rootContentStack.axis = .horizontal
         view.addSubview(rootContentStack)
         rootContentStack.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11, *) {
-            constraints.append(contentsOf: [
-                rootContentStack.leadingAnchor.constraint(equalTo: view.safeAreaLeadingAnchor),
-                rootContentStack.trailingAnchor.constraint(equalTo: view.safeAreaTrailingAnchor)
-                ])
-        } else {
-            constraints.append(contentsOf: [
-                rootContentStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                rootContentStack.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-                ])
-        }
+        constraints.append(contentsOf: [
+            rootContentStack.leadingAnchor.constraint(equalTo: view.safeAreaLeadingAnchor),
+            rootContentStack.trailingAnchor.constraint(equalTo: view.safeAreaTrailingAnchor)
+            ])
         self.rootContainerTop = rootContentStack.topAnchor.constraint(equalTo: view.topAnchor)
         self.rootContainerBottom = view.bottomAnchor.constraint(equalTo: rootContentStack.bottomAnchor)
         constraints.append(contentsOf: [rootContainerTop, rootContainerBottom])
@@ -286,32 +277,24 @@ open class TMBarView<Layout: TMBarLayout, Button: TMBarButton, Indicator: TMBarI
             let leftButtonWidth = (buttons.all.first?.bounds.size.width ?? 0.0) / 2.0
             var width = bounds.size.width / 2
             width -= contentInset.left
-            if #available(iOS 11, *) {
-                width -= safeAreaInsets.left
-            }
+            width -= safeAreaInsets.left
             leftAlignmentInset = width - leftButtonWidth
             
             // Right Side Inset
             let rightButtonWidth = (buttons.all.last?.bounds.size.width ?? 0.0) / 2.0
             width = bounds.size.width / 2
             width -= contentInset.right
-            if #available(iOS 11, *) {
-                width -= safeAreaInsets.right
-            }
+            width -= safeAreaInsets.right
             rightAlignmentInset = width - rightButtonWidth
         case .trailing:
             let buttonWidth = (buttons.all.first?.bounds.size.width ?? 0.0)
             var width = bounds.size.width
-            if #available(iOS 11, *) {
-                width -= safeAreaInsets.left
-            }
+            width -= safeAreaInsets.left
             leftAlignmentInset = width - buttonWidth
             rightAlignmentInset = 0.0
         case .centerDistributed:
             var width = bounds.size.width / 2
-            if #available(iOS 11, *) {
-                width -= safeAreaInsets.left
-            }
+            width -= safeAreaInsets.left
             leftAlignmentInset = max(0.0, width - layoutGrid.frame.width / 2)
             rightAlignmentInset = 0.0
         }
@@ -456,9 +439,7 @@ extension TMBarView: TMBar {
             var maxOffsetX = (self.scrollView.contentSize.width - (self.bounds.size.width - pinnedAccessoryWidth)) + self.scrollView.contentInset.right // maximum possible x offset
             let minOffsetX = -self.scrollView.contentInset.left
             
-            if #available(iOS 11, *) {
-                maxOffsetX += self.safeAreaInsets.right
-            }
+            maxOffsetX += self.safeAreaInsets.right
             
             // Aim to use a focus origin that centers the button in the bar.
             // If the minimum viable x offset is greater than the center of the bar however, use that.

@@ -144,14 +144,7 @@ public final class TMSystemBar: UIView {
         ]
         
         let safeAreaInsets: UIEdgeInsets
-        if #available(iOS 11, *) {
-            safeAreaInsets = viewController.view.safeAreaInsets
-        } else {
-            safeAreaInsets = UIEdgeInsets(top: viewController.topLayoutGuide.length,
-                                          left: 0.0,
-                                          bottom: viewController.bottomLayoutGuide.length,
-                                          right: 0.0)
-        }
+        safeAreaInsets = viewController.view.safeAreaInsets
         
         let isNavigationBarNotVisible = viewController.navigationController?.isNavigationBarHidden != false
         

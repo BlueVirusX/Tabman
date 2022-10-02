@@ -246,11 +246,7 @@ extension TabmanViewController {
             topBarContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             topBarContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
-        if #available(iOS 11, *) {
-            topConstraints.append(topBarContainer.topAnchor.constraint(equalTo: view.safeAreaTopAnchor))
-        } else {
-            topConstraints.append(topBarContainer.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor))
-        }
+        topConstraints.append(topBarContainer.topAnchor.constraint(equalTo: view.safeAreaTopAnchor))
         NSLayoutConstraint.activate(topConstraints)
         
         bottomBarContainer.axis = .vertical
@@ -261,11 +257,7 @@ extension TabmanViewController {
             bottomBarContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomBarContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
-        if #available(iOS 11, *) {
-            bottomConstraints.append(bottomBarContainer.bottomAnchor.constraint(equalTo: view.safeAreaBottomAnchor))
-        } else {
-            bottomConstraints.append(bottomBarContainer.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor))
-        }
+        bottomConstraints.append(bottomBarContainer.bottomAnchor.constraint(equalTo: view.safeAreaBottomAnchor))
         NSLayoutConstraint.activate(bottomConstraints)
     }
     
@@ -367,10 +359,8 @@ internal extension TabmanViewController {
 
         // Don't inset TabmanViewController using AutoInsetter
         if viewController is TabmanViewController {
-            if #available(iOS 11, *) {
-                if viewController?.additionalSafeAreaInsets != insets.spec.additionalRequiredInsets {
-                    viewController?.additionalSafeAreaInsets = insets.spec.additionalRequiredInsets
-                }
+            if viewController?.additionalSafeAreaInsets != insets.spec.additionalRequiredInsets {
+                viewController?.additionalSafeAreaInsets = insets.spec.additionalRequiredInsets
             }
         } else {
             insetter.inset(viewController, requiredInsetSpec: insets.spec)

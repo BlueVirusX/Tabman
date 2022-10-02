@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIView {
-    @available(iOS 11.0, *)
     private var internalSafeAreaLayoutGuide: UILayoutGuide? {
         if self.responds(to: #selector(getter: UIView.safeAreaLayoutGuide)) == .some(true) {
             return self.safeAreaLayoutGuide
@@ -18,22 +17,18 @@ extension UIView {
         }
     }
     
-    @available(iOS 11.0, *)
     var safeAreaTopAnchor: NSLayoutYAxisAnchor {
         return internalSafeAreaLayoutGuide?.topAnchor ?? topAnchor
     }
     
-    @available(iOS 11.0, *)
     var safeAreaBottomAnchor: NSLayoutYAxisAnchor {
         return internalSafeAreaLayoutGuide?.bottomAnchor ?? bottomAnchor
     }
     
-    @available(iOS 11.0, *)
     var safeAreaTrailingAnchor: NSLayoutXAxisAnchor {
         return internalSafeAreaLayoutGuide?.trailingAnchor ?? trailingAnchor
     }
     
-    @available(iOS 11.0, *)
     var safeAreaLeadingAnchor: NSLayoutXAxisAnchor {
         return internalSafeAreaLayoutGuide?.leadingAnchor ?? leadingAnchor
     }
